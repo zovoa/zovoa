@@ -23,7 +23,7 @@ interface AnalysisResponse {
 
 const AUDIENCE_SUGGESTIONS = ['GenZ', 'SMEs', 'Millennials', 'B2B', 'B2C', 'Enterprises', 'Startups'];
 
-const BASE_URL = 'https://01d7-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
+const BASE_URL = 'https://d971-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
 
 const IdeaSubmissionForm: React.FC<IdeaSubmissionFormProps> = ({ state, dispatch }) => {
   const { currentUser } = useAuth();
@@ -137,7 +137,7 @@ const IdeaSubmissionForm: React.FC<IdeaSubmissionFormProps> = ({ state, dispatch
       userId: '1234',
       contactEmail: state.idea.mail,
       contactPhone: state.idea.phone_number,
-      demoUrl: 'https://youtu.be/vJQMhj6WYZA?si=YTJHno6ZkXym47BI',
+      demoUrl: '',
       isPaid: false,
       price: 4999,
       priority: "High",

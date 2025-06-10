@@ -96,7 +96,7 @@ const Dashboard = () => {
   });
 };
 
-const BASE_URL = 'https://01d7-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
+const BASE_URL = 'https://d971-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
 
 
   // Fetch data from backend

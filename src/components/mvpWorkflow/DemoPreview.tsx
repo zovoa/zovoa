@@ -34,13 +34,22 @@ const SAMPLE_FEATURES = [
 ];
 
 const RAZORPAY_KEY_ID = 'rzp_live_BnPhMdUqppmXgD';
-const BASE_URL = 'https://01d7-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
+const BASE_URL = 'https://d971-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api';
 
 declare global {
   interface Window {
     Razorpay: any;
   }
 }
+
+const getCachedPaymentStatus = (projectId: string) => {
+  const cachedData = localStorage.getItem(`paymentStatus_${projectId}`);
+  return cachedData ? JSON.parse(cachedData) : null;
+};
+
+const setCachedPaymentStatus = (projectId: string, status: boolean) => {
+  localStorage.setItem(`paymentStatus_${projectId}`, JSON.stringify(status));
+};
 
 const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
   const { toast } = useToast();
@@ -49,6 +58,9 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPaymentSaved, setIsPaymentSaved] = useState(false);
   const { currentUser } = useAuth();
+
+  const isPaid = state.projectData?.paid || (state.projectData?.id && getCachedPaymentStatus(state.projectData.id));
+  const canViewLive = isPaymentSaved || isPaid;
 
 
   useEffect(() => {
@@ -62,6 +74,8 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
       dispatch({ type: 'SET_PROJECT_DATA', payload: rehydrated });
     }
   }, [projectDataFromRouter, dispatch]);
+
+
 
   useEffect(() => {
     console.log('Is project data available?', !!state.projectData);
@@ -80,6 +94,15 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
     console.log('Project paid:', state.projectData?.paid);
     console.groupEnd();
   }, [state.projectData]);
+
+  useEffect(() => {
+    if (state.projectData?.id) {
+      const cachedStatus = getCachedPaymentStatus(state.projectData.id);
+      if (cachedStatus) {
+        dispatch({ type: 'UPDATE_PAYMENTS', payload: { prototype: true } });
+      }
+    }
+  }, [state.projectData?.id, dispatch]);
 
 
   const getIconComponent = (type: string) => {
@@ -166,6 +189,8 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
 
       verifyResData = verifyRes.data;
       console.log('✅ Payment verified on backend:', verifyResData);
+
+
     } catch (error) {
       console.error('❌ Payment verification failed:', error);
       toast({
@@ -208,6 +233,11 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
     } catch (error) {
       console.error('❌ Failed to save payment record:', error);
       setIsPaymentSaved(false);
+    }
+
+    // After successful payment verification and saving
+    if (state.projectData?.id) {
+      setCachedPaymentStatus(state.projectData.id, true);
     }
 
 
@@ -339,9 +369,9 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
                   <Button
                     onClick={() => initializeRazorpayPayment(pkg.price, pkg.type)}
                     className="w-full bg-blue-600 hover:bg-blue-700"
-                    disabled={(state.preview.type === pkg.type && !!state.preview.accessToken) || state.projectData?.paid}
+                    disabled={(state.preview.type === pkg.type && !!state.preview.accessToken) || isPaid}
                   >
-                    {(state.preview.type === pkg.type && state.preview.accessToken) || state.projectData?.paid
+                    {(state.preview.type === pkg.type && state.preview.accessToken) || isPaid
                       ? '✓ Purchased'
                       : `Pay ₹${state.projectData?.price} with Razorpay`}
                   </Button>
@@ -362,11 +392,10 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
                 Complete your payment to unlock and view your live MVP deployment.
               </p>
               <Button
-                className={`w-full ${isPaymentSaved || state.projectData?.paid ? 'bg-purple-600 hover:bg-purple-700' : 'bg-gray-400 cursor-not-allowed'
-                  }`}
-                disabled={!isPaymentSaved && !state.projectData?.paid}
+                className={`w-full ${canViewLive ? 'bg-purple-600 hover:bg-purple-700' : 'bg-gray-400 cursor-not-allowed'}`}
+                disabled={!canViewLive}
                 onClick={() => {
-                  if (isPaymentSaved) {
+                  if (canViewLive) {
                     const liveUrl = state.projectData?.liveUrl;
                     if (liveUrl) {
                       window.open(liveUrl, '_blank');
@@ -375,7 +404,7 @@ const DemoPreview: React.FC<DemoPreviewProps> = ({ state, dispatch }) => {
                   console.log("view live project button is clicked ");
                 }}
               >
-                {isPaymentSaved || state.projectData?.paid ? '🚀 View Live Project' : '🔒 Locked — Complete Payment First'}
+                {canViewLive ? '🚀 View Live Project' : '🔒 Locked — Complete Payment First'}
               </Button>
             </div>
 
