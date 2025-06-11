@@ -23,7 +23,7 @@ interface AnalysisResponse {
 
 const AUDIENCE_SUGGESTIONS = ['GenZ', 'SMEs', 'Millennials', 'B2B', 'B2C', 'Enterprises', 'Startups'];
 
-const BASE_URL = 'https://fb02-2401-4900-1c27-4d9a-34c0-5d47-b2e1-2c49.ngrok-free.app/api';
+const BASE_URL = 'https://097a-2401-4900-1c27-4d9a-34c0-5d47-b2e1-2c49.ngrok-free.app/api';
 
 const IdeaSubmissionForm: React.FC<IdeaSubmissionFormProps> = ({ state, dispatch }) => {
   const { currentUser } = useAuth();
