@@ -80,7 +80,7 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({
     try {
       console.log('🚀 Sending form data to backend:', formData);
 
-      const response = await fetch('https://01d7-2401-4900-889d-a8ba-d898-c2ef-f7c7-db32.ngrok-free.app/api/website-forms', {
+      const response = await fetch('https://fb02-2401-4900-1c27-4d9a-34c0-5d47-b2e1-2c49.ngrok-free.app/api/website-forms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
