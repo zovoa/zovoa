@@ -3,12 +3,13 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCncBPAu0aA5lMvo_yI12IvmAJmYexYVVY",
-  authDomain: "ammaconstruction-db736.firebaseapp.com",
-  projectId: "ammaconstruction-db736",
-  storageBucket: "ammaconstruction-db736.firebasestorage.app",
-  messagingSenderId: "950078485562",
-  appId: "1:950078485562:web:c188df385c250a84ffb103"
+  apiKey: "AIzaSyAndO0ZS0XX-1VDcj0Vzx4PkT_cYdrctd4",
+  authDomain: "lytortech-53590.firebaseapp.com",
+  projectId: "lytortech-53590",
+  storageBucket: "lytortech-53590.firebasestorage.app",
+  messagingSenderId: "498653708871",
+  appId: "1:498653708871:web:77a45a4ab2f1e160f92762",
+  measurementId: "G-5TRVSMER35"
 };
 
 
