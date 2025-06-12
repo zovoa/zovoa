@@ -29,7 +29,7 @@ const ThreeDTemplateGallery: React.FC<ThreeDTemplateGalleryProps> = ({
     const fetchTemplates = async () => {
       try {
         const res = await axios.get(
-          `https://097a-2401-4900-1c27-4d9a-34c0-5d47-b2e1-2c49.ngrok-free.app/api/3d-website-templets/get/templet/${brandNicheId}`,
+          `https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api/3d-website-templets/get/templet/${brandNicheId}`,
           {
             headers: {
               'Content-Type': 'application/json',
