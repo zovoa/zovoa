@@ -37,12 +37,13 @@ const TemplateGallery: React.FC<TemplateGalleryProps> = ({
       console.log('[TEMPLATE] Fetching templates...');
 
       try {
-        const response = await axios.get('https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api/website-templets/get/templet/ecommerce', {
+        const response = await axios.get(`https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api/website-templets/get/templet/${nicheId}`, {
           headers: {
             'Content-Type': 'application/json',
             'ngrok-skip-browser-warning': 'true'
           }
         });
+
 
         console.log('[TEMPLATE] Fetched response:', response.data);
         setTemplates(response.data);
