@@ -405,7 +405,7 @@ const BrandCustomization: React.FC<BrandCustomizationProps> = ({
           variant="outline"
           onClick={onBack}
           size="lg"
-          className="px-8"
+          className="px-8 bg-black text-white"
         >
           Back to Templates
         </Button>

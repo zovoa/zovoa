@@ -194,9 +194,14 @@ const TemplateGallery: React.FC<TemplateGalleryProps> = ({
           )}
 
           <div className="flex justify-between">
-            <Button variant="outline" onClick={onBack}>
+            <Button
+              onClick={onBack}
+              className="bg-black text-white hover:bg-gray-900"
+            >
               Back to Niches
             </Button>
+
+
             <Button
               onClick={handleNext}
               disabled={!selectedTemplate}

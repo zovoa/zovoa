@@ -402,7 +402,13 @@ const ConfigurationForm: React.FC<ConfigurationFormProps> = ({
 
       {/* Footer Controls */}
       <div className="flex justify-between mt-12">
-        <Button variant="outline" onClick={onBack}>Back to Templates</Button>
+        <Button
+          onClick={onBack}
+          className="bg-black text-white hover:bg-gray-900"
+        >
+          Back to Templates
+        </Button>
+
         <Button onClick={onNext} disabled={!isFormValid()} className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
           Preview & Deploy
         </Button>

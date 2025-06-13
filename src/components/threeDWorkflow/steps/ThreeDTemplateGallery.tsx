@@ -58,7 +58,7 @@ const ThreeDTemplateGallery: React.FC<ThreeDTemplateGalleryProps> = ({
 
   const handleNext = () => {
     if (selectedTemplate) {
-      console.log("templateID :"+selectedTemplate.id);
+      console.log("templateID :" + selectedTemplate.id);
 
       onNext(selectedTemplate.id);
 
@@ -174,10 +174,11 @@ const ThreeDTemplateGallery: React.FC<ThreeDTemplateGalleryProps> = ({
           variant="outline"
           onClick={onBack}
           size="lg"
-          className="px-8"
+          className="px-8 bg-black text-white"
         >
           Back to Brands
         </Button>
+
 
         <Button
           onClick={handleNext}
