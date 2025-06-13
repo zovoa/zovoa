@@ -37,7 +37,7 @@ const TemplateGallery: React.FC<TemplateGalleryProps> = ({
       console.log('[TEMPLATE] Fetching templates...');
 
       try {
-        const response = await axios.get(`https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api/website-templets/get/templet/${nicheId}`, {
+        const response = await axios.get(`https://3263-2401-4900-1c26-72f3-a891-c28a-774a-90f7.ngrok-free.app/api/website-templets/get/templet/${nicheId}`, {
           headers: {
             'Content-Type': 'application/json',
             'ngrok-skip-browser-warning': 'true'

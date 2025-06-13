@@ -34,7 +34,7 @@ const SAMPLE_FEATURES = [
 ];
 
 const RAZORPAY_KEY_ID = 'rzp_live_BnPhMdUqppmXgD';
-const BASE_URL = 'https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api';
+const BASE_URL = 'https://3263-2401-4900-1c26-72f3-a891-c28a-774a-90f7.ngrok-free.app/api';
 
 declare global {
   interface Window {

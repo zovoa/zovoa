@@ -320,7 +320,7 @@ const BrandCustomization: React.FC<BrandCustomizationProps> = ({
                 console.log('[FORM SUBMIT PAYLOAD]', payload);
 
                 try {
-                  const res = await fetch('https://7e70-2401-4900-1cb5-11ed-f504-f58f-154c-914b.ngrok-free.app/api/3d-website-forms', {
+                  const res = await fetch('https://3263-2401-4900-1c26-72f3-a891-c28a-774a-90f7.ngrok-free.app/api/3d-website-forms', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
